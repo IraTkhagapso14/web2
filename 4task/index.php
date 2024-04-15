@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     // Проверка наличия кук с признаками ошибок.
     $errors = array();
-    $errors['names'] = !empty($_COOKIE['names_error']);
+    $errors['name'] = !empty($_COOKIE['name_error']);
     $errors['phone'] = !empty($_COOKIE['phone_error']);
     $errors['email'] = !empty($_COOKIE['email_error']);
     $errors['date'] = !empty($_COOKIE['date_error']);
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     // Проверка наличия кук с ранее введенными значениями полей.
     $values = array();
-    $values['names'] = empty($_COOKIE['names_value']) ? '' : $_COOKIE['names_value'];
+    $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
     $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
     $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
     $values['date'] = empty($_COOKIE['date_value']) ? '' : $_COOKIE['date_value'];
@@ -63,11 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $errors = FALSE;
 
     // Проверка поля "ФИО".
-    if (empty($_POST['names'])  !validateData($_POST['names'], '/^[a-zA-Zа-яА-Я\s]{1,150}$/')) {
-        setcookie('names_error', '1');
+    if (empty($_POST['name'])  !validateData($_POST['name'], '/^[a-zA-Zа-яА-Я\s]{1,150}$/')) {
+        setcookie('name_error', '1');
         $errors = TRUE;
     } else {
-        setcookie('names_value', $_POST['names'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
+        setcookie('name_value', $_POST['name'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
     }
 
     // Проверка поля "Телефон".
@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     // Удаляем куки с признаками ошибок после успешной валидации.
-    setcookie('names_error', '', 100000);
+    setcookie('name_error', '', 100000);
     setcookie('phone_error', '', 100000);
     setcookie('email_error', '', 100000);
     setcookie('date_error', '', 100000);
@@ -159,8 +159,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     try {
-        $stmt = $db->prepare("INSERT INTO application (names,phones,email,dates,gender,biography)" . "VALUES (:names,:phone,:email,:date,:gender,:biography)");
-        $stmt->execute(array('names' => $names, 'phone' => $phone, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
+        $stmt = $db->prepare("INSERT INTO application (name,phones,email,dates,gender,biography)" . "VALUES (:name,:phone,:email,:date,:gender,:biography)");
+        $stmt->execute(array('name' => $name, 'phone' => $phone, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
         $applicationId = $db->lastInsertId();
       
         foreach ($_POST['Languages'] as $language) {
