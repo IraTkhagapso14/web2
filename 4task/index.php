@@ -50,28 +50,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = FALSE;
 
-    if (empty($_POST['name'])  !validateData($_POST['name'], '/^[a-zA-Zа-яА-Я\s]{1,150}$/')) {
+    if (empty($_POST['name']) || !validateData($_POST['name'], '/^[a-zA-Zа-яА-Я\s]{1,150}$/')) {
         setcookie('name_error', '1');
         $errors = TRUE;
     } else {
         setcookie('name_value', $_POST['name'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
     }
 
-    if (empty($_POST['phone'])  !validateData($_POST['phone'], '/^\+?\d{1,15}$/')) {
+    if (empty($_POST['phone']) || !validateData($_POST['phone'], '/^\+?\d{1,15}$/')) {
         setcookie('phone_error', '1');
         $errors = TRUE;
     } else {
         setcookie('phone_value', $_POST['phone'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
     }
 
-    if (empty($_POST['email'])  !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         setcookie('email_error', '1');
         $errors = TRUE;
       } else {
         setcookie('email_value', $_POST['email'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
       }
 
-      if (empty($_POST['date'])  !validateData($_POST['date'], '/^\d{4}-\d{2}-\d{2}$/')) {
+      if (empty($_POST['date']) || !validateData($_POST['date'], '/^\d{4}-\d{2}-\d{2}$/')) {
         setcookie('date_error', '1');
         $errors = TRUE;
       } else {
