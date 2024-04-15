@@ -11,12 +11,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
+    <?php
+    if (!empty($massages))
+    {
+print('<div id="messages">');
+foreach($messages as $message)
+{
+    print($message);
+}
+print('</div>');
+    }
+    
+    ?>
     <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
-        <form action="index.php" method="POST" class="row mx-5 my-2 gy-1">
-            <div class="form_item form-group">
-                <label for="formName" style="color: black;">ФИО:</label>
-                <input type="text" class="form_input _req form-control w-50 shadow bg-white rounded" name="name"
+        <form action="index.php" method="POST" class="row mx-5 my-2 gy-1"> 
+                       <input type="text" class="form_input _req form-control w-50 shadow bg-white rounded" name="name"
                     id="formName" placeholder="Введите ФИО">
             </div>
 
