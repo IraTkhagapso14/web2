@@ -143,9 +143,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     setcookie('biography_error', '', 100000);
     setcookie('agree_error', '', 100000);
 
-    $user = 'u67419';
-    $pass = '8693464';
-    $db = new PDO('mysql:host=localhost;dbname=u67419', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $user = 'u67438';
+    $pass = '9231297';
+    $db = new PDO('mysql:host=localhost;dbname=u67438', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     foreach ($_POST['languages'] as $language) {
