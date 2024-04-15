@@ -53,60 +53,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (empty($_POST['name']) || !validateData($_POST['name'], '/^[a-zA-Zа-яА-Я\s]{1,150}$/')) {
         setcookie('name_error', '1');
         $errors = TRUE;
-    } else {
-        setcookie('name_value', $_POST['name'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-    }
+    } 
 
     if (empty($_POST['phone']) || !validateData($_POST['phone'], '/^\+?\d{1,15}$/')) {
         setcookie('phone_error', '1');
         $errors = TRUE;
-    } else {
-        setcookie('phone_value', $_POST['phone'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-    }
+    } 
 
     if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         setcookie('email_error', '1');
         $errors = TRUE;
-      } else {
-        setcookie('email_value', $_POST['email'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-      }
+      } 
 
       if (empty($_POST['date']) || !validateData($_POST['date'], '/^\d{4}-\d{2}-\d{2}$/')) {
         setcookie('date_error', '1');
         $errors = TRUE;
-      } else {
-        setcookie('date_value', $_POST['date'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-      }
+      } 
 
       if (empty($_POST['gender'])) {
         setcookie('gender_error', '1');
         $errors = TRUE;
-      } else {
-        setcookie('gender_value', $_POST['gender'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-      }
+      } 
 
       if (empty($_POST['Languages[]'])) {
         setcookie('Languages[]_error', '1');
         $errors = TRUE;
-      } else {
-        // Формируем строку из выбранных языков для сохранения в куки.
-        $languages_value = implode(',', $_POST['Languages[]']);
-        setcookie('Languages[]_value', $languages_value, time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-      }
+      } 
 
       if (empty($_POST['biography']) || !validateData($_POST['biography'], '/^[a-zA-Zа-яА-Яе0-9,.!? ]+$/')) {
         setcookie('biography_error', '1');
         $errors = TRUE;
-      } else {
-        setcookie('biography_value', $_POST['biography'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-      }
+      } 
 
       if (empty($_POST['agree'])) {
         setcookie('agree_error', '1');
         $errors = TRUE;
-      } else {
-        setcookie('agree_value', $_POST['agree'], time() + 365 * 24 * 60 * 60); // Сохранение значения поля на год.
-      }
+      } 
 
       if ($errors) {
         // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
