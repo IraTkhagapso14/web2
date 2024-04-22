@@ -55,28 +55,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if ($errors['gen']) {
     setcookie('gen_error', '', 100000);
     $messages[] = '<div class="error">Введите пол</div>';
-}
-if ($errors['symbolfio_error']) {
-  setcookie('symbolfio_error', '', 100000);
-  $messages[] = '<div class="error">ФИО содержит недопустимые символы.</div>';
-}
-
-if ($errors['symboltel_error']) {
-  setcookie('symboltel_error', '', 100000);
-  $messages[] = '<div class="error">Укажите номер телефона в формате +7 (XXX) XXX-XX-XX.</div>';
-}
-if ($errors['languages_error']) {
-  setcookie('languages_error', '', 100000);
-  $messages[] = '<div class="error">Выберите языки.</div>';
-}
-if ($errors['date_value_error']) {
-  setcookie('date_value_error', '', 100000);
-  $messages[] = '<div class="error">Заполните дату в формате d.m.Y.</div>';
-}
-if ($errors['bio_value_error']) {
-  setcookie('bio_value_error', '', 100000);
-  $messages[] = '<div class="error">Биография содержит недопустимые символы.</div>';
-}
+  }
+  if ($errors['symbolfio_error']) {
+    setcookie('symbolfio_error', '', 100000);
+    $messages[] = '<div class="error">ФИО содержит недопустимые символы.</div>';
+  }
+  if ($errors['symboltel_error']) {
+    setcookie('symboltel_error', '', 100000);
+    $messages[] = '<div class="error">Укажите номер телефона в формате +7 (XXX) XXX-XX-XX.</div>';
+  }
+  if ($errors['languages_error']) {
+    setcookie('languages_error', '', 100000);
+    $messages[] = '<div class="error">Выберите языки.</div>';
+  }
+  if ($errors['date_value_error']) {
+    setcookie('date_value_error', '', 100000);
+    $messages[] = '<div class="error">Заполните дату в формате d.m.Y.</div>';
+  }
+  if ($errors['bio_value_error']) {
+    setcookie('bio_value_error', '', 100000);
+    $messages[] = '<div class="error">Биография содержит недопустимые символы.</div>';
+  }
   $values = array();
   $values['fio'] = empty($_COOKIE['fio_value']) ? '' : $_COOKIE['fio_value'];
   $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
@@ -120,7 +119,7 @@ else  {
   if (empty($_POST['gen']) || ($_POST['gen']!="f" && $_POST['gen']!='m')) {
     setcookie('gen_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
-}
+  }
     setcookie('gen_value', $_POST['gen'], time() + 365 * 24 * 60 * 60);
 
   if (empty($_POST['bio'])) {
@@ -161,8 +160,7 @@ else  {
       setcookie('languages_unknown', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
     }
-  } }
-  {
+  } 
     $languages = $_POST['languages'];
     $languagesString = serialize($languages); 
     setcookie('languages', $languagesString, time() + 3600, '/');
@@ -218,3 +216,4 @@ else  {
   setcookie('save', '1');
   header('Location: index.php');
 }
+?>
