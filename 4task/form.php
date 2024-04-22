@@ -110,15 +110,5 @@
         </form>
     </div>
 
-    <div class="fon1 tab mt-4 mb-4 shadow rounded">
-        <label>1. Ошибка в заполнении.</label><br>
-        <img src="img/1.png" alt="Image 1">
-        <br>
-        <label>2. Ошибка в заполнении (с телефона).</label><br>
-        <img src="img/2.png" alt="Image 2">
-        <br>
-        <label>3. Успех!</label><br>
-        <img src="img/3.png" alt="Image 3">
-        <br>
-    </div>
+
 </body>
