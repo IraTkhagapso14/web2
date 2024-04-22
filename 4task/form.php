@@ -5,96 +5,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контактная форма</title>
+    <title>Форма</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
-<?php
-  if (!empty($messages)) {
-    print('<div id="messages">');
-    foreach ($messages as $message) {
-      print($message);
-    }
-    print('</div>');
-  }
-?>
 
 <body>
-    <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
+    <?php
+    if (!empty($massages))
+    {
+print('<div id="messages">');
+foreach($messages as $message)
+{
+    print($message);
+}
+print('</div>');
+    }
+    
+    ?>
+ <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
         <form action="index.php" method="POST" class="row mx-5 my-2 gy-1">
             <div class="form_item form-group">
-                <label for="formName" style="color: black;">ФИО:<br> <input name="fio" <?php if ($errors['fio'] || $errors['fio_error']) {
-                                      print 'class="error"';
-                                    } ?> value="<?php print $values['fio']; ?>"> 
-                </label>
+                <label for="formName" style="color: black;">ФИО:</label>
+                <input type="text" class="form_input _req form-control w-50 shadow bg-white rounded" name="name"
+                    id="formName" placeholder="Введите ФИО">
             </div>
 
             <div class="form_item form-group">
-                <label>Номер телефона:<br/>
-                <input name="tel" <?php if ($errors['tel'] || $errors['tel_error']) {
-                                    print 'class="error"';
-                                } ?> value="<?php print $values['tel']; ?>"> 
-                </label>
+                <label for="formTel" style="color: black;">Телефон:</label>
+                <input type="tel" class="form_input _req form-control w-50 shadow bg-white rounded" name="phone" 
+                    id="formTel" placeholder="Введите телефон">
             </div>
 
             <div class="form_item form-group">
-                <label>Email:<br/>
-                <input name="email" <?php if ($errors['email']) {
-                                    print 'class="error"';  
-                                    } ?> value="<?php print $values['email']; ?>" type="email">
-                </label>
+                <label for="formEmail" style="color: black;">E-mail:</label>
+                <input type="email" class="form_input _req _email form-control w-50 shadow bg-white rounded" id="formEmail"
+                    name="email" placeholder="Введите E-mail">
             </div>
 
             <div class="form_item form-group">
-                <label for="formDate" style="color: black;">Дата рождения:<br/>
-                <input name="date" <?php if ($errors['date']) {
-                              print 'class="error"';
-                            } ?> value="<?php print $values['date']; ?>" type="date">
-                </label>
+                <label for="formDate" style="color: black;">Дата рождения:</label>
+                <input type="date" class="form_input _req form-control w-50 shadow bg-white rounded" name="date" value=""
+                    min="1900-01-01" max="2024-03-01" id="formDate">
             </div>
-
-            
 
             <div class="form_item form-group">
                 <label style="color: black;">Пол:</label><br>
                 <div class="form-check1 form-check-inline">
-                    <input type="radio"  name="gen" <?php 
-                    if ($errors['gen']) {print 'class="error"' ;} 
-                    if( $values['gen'] == 'm') {print "checked='checked'";}?> value="m"> мужской</label>
+                    <input class="form-check-input" type="radio" name="gender" id="Sex1" value="m">
+                    <label class="form-check-label" for="Sex1">Мужской</label>
                 </div>
                 <div class="form-check1 form-check-inline">
-                    <input type="radio" name="gen" <?php 
-                    if ($errors['gen']) {print 'class="error"' ;} 
-                    if( $values['gen'] == 'f') {print "checked='checked'";}?> value="f"> женский</label>
+                    <input class="form-check-input" type="radio" name="gender" id="Sex2" value="f">
+                    <label class="form-check-label" for="Sex2">Женский</label>
                 </div>
             </div>            
 
             <div class="form_item form-group">
-                <label style="color: black;">Любимый язык программирования:</label><br/>
-                <select name="languages[]" multiple="multiple" <?php if ($errors['languages_error']) {
-                                  print 'class="error"';
-                                } ?>>
-                    <option value="Pascal"<?php echo is_array($languages) &&  in_array('1', $languages) ? 'selected' : ''; ?>>Pascal</option>
-                    <option value="C" <?php echo is_array($languages) && in_array('2', $languages) ? 'selected' : ''; ?> >C</option>
-                    <option value="C_plus_plus" <?php echo is_array($languages) && in_array('3', $languages) ? 'selected' : ''; ?>>C++</option>
-                    <option value="JavaScript" <?php echo is_array($languages) && in_array('4', $languages) ? 'selected' : ''; ?>>JavaScript</option>
-                    <option value="PHP" <?php echo is_array($languages) && in_array('5', $languages) ? 'selected' : ''; ?>>PHP</option>
-                    <option value="Python" <?php echo is_array($languages) &&in_array('6', $languages) ? 'selected' : ''; ?>>Python</option>
-                    <option value="Java" <?php echo is_array($languages) && in_array('7', $languages) ? 'selected' : ''; ?>>Java</option>
-                    <option value="Haskel" <?php echo is_array($languages) && in_array('8', $languages) ? 'selected' : ''; ?>>Haskel</option>
-                    <option value="Clojure" <?php echo is_array($languages) && in_array('9', $languages) ? 'selected' : ''; ?>>Clojure</option>
-                    <option value="Prolog" <?php echo is_array($languages) && in_array('10', $languages) ? 'selected' : ''; ?>>Prolog</option>
-                    <option value="Scala" <?php echo is_array($languages) && in_array('11', $languages) ? 'selected' : ''; ?>>Scala</option>
-                </select> 
+                <label for="multipleLanguages" style="color: black;">Любимый язык программирования:</label>
+                    <select multiple class="form_input _req form-control w-50 shadow bg-white rounded" id="multipleLanguages" name="Languages[]">
+                        <option value="Pascal">Pascal</option>
+                        <option value="C">C</option>
+                        <option value="C_plus_plus">C++</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="PHP">PHP</option>          
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="Haskel">Haskel</option>
+                        <option value="Clojure">Clojure</option>
+                        <option value="Prolog">Prolog</option>
+                        <option value="Scala">Scala</option>
+                    </select>
             </div>
 
             <div class="form_item form-group">
-                <label for="formMessage" style="color: black;">Биография:</label><br/>
-                <textarea name="bio" <?php if ($errors['bio']) {
-                                  print 'class="error"';
-                                } ?>><?php print $values['bio']; ?></textarea>
+                <label for="formMessage" style="color: black;">Биография:</label>
+                <textarea id="formMessage" name="biography"
+                    class="form_input _req form-control w-50 shadow bg-white rounded"></textarea>
             </div>
 
             <div class="form_item form-group">
@@ -108,17 +97,5 @@
                 <label class="col-12"><input type="submit" value="Сохранить" name="submit" class="submit btn-dark"></label>
             </div>
         </form>
-    </div>
-
-    <div class="fon1 tab mt-4 mb-4 shadow rounded">
-        <label>1. Ошибка в заполнении.</label><br>
-        <img src="img/1.png" alt="Image 1">
-        <br>
-        <label>2. Ошибка в заполнении (с телефона).</label><br>
-        <img src="img/2.png" alt="Image 2">
-        <br>
-        <label>3. Успех!</label><br>
-        <img src="img/3.png" alt="Image 3">
-        <br>
     </div>
 </body>
