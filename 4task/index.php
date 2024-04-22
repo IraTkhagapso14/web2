@@ -26,28 +26,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
  
   // Складываем признак ошибок в массив.
   $errors = array();
-  $errors['names'] = !empty($_COOKIE['names_error']);
-  $errors['phone'] = !empty($_COOKIE['phone_error']);
+  $errors['name'] = !empty($_COOKIE['name_error']);
+  $errors['tel'] = !empty($_COOKIE['tel_error']);
   $errors['email'] = !empty($_COOKIE['email_error']);
   $errors['date'] = !empty($_COOKIE['date_error']);
   $errors['gender'] = !empty($_COOKIE['gender_error']);
-  $errors['languages'] = !empty($_COOKIE['languages_error']);
+  $errors['Languages_[]'] = !empty($_COOKIE['Languages[]_error']);
   $errors['biography'] = !empty($_COOKIE['biography_error']);
   $errors['agree'] = !empty($_COOKIE['agree_error']);
  
   // Выдаем сообщения об ошибках.
-  if ($errors['names']) {
+  if ($errors['name']) {
     // Удаляем куки, указывая время устаревания в прошлом.
-    setcookie('names_error', '', 100000);
-    setcookie('names_value', '', 100000);
+    setcookie('name_error', '', 100000);
+    setcookie('name_value', '', 100000);
     // Выводим сообщение.
     $messages[] = '<div class="error">Заполните имя.</div>';
   }
  
-  if ($errors['phone']) {
+  if ($errors['tel']) {
     // Удаляем куки, указывая время устаревания в прошлом.
-    setcookie('phone_error', '', 100000);
-    setcookie('phone_value', '', 100000);
+    setcookie('tel_error', '', 100000);
+    setcookie('tel_value', '', 100000);
     // Выводим сообщение.
     $messages[] = '<div class="error">Заполните телефон.</div>';
   }
@@ -77,10 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages[] = '<div class="error">Заполните пол.</div>';
   }
  
-  if ($errors['languages']) {
+  if ($errors['Languages_[]']) {
     // Удаляем куки, указывая время устаревания в прошлом.
-    setcookie('languages_error', '', 100000);
-    setcookie('languages_value', '', 100000);
+    setcookie('Languages_[]_error', '', 100000);
+    setcookie('languages_[]_value', '', 100000);
     // Выводим сообщение.
     $messages[] = '<div class="error">Заполните языки.</div>';
   }
@@ -103,15 +103,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
  
   // Складываем предыдущие значения полей в массив, если есть.
   $values = array();
-  $values['names'] = empty($_COOKIE['names_value']) ? '' : $_COOKIE['names_value'];
-  $values['phone'] = empty($_COOKIE['phone_value']) ? '' : $_COOKIE['phone_value'];
+  $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
+  $values['tel'] = empty($_COOKIE['tel_value']) ? '' : $_COOKIE['tel_value'];
   $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
   $values['date'] = empty($_COOKIE['date_value']) ? '' : $_COOKIE['date_value'];
   $values['gender'] = empty($_COOKIE['gender_value']) ? '' : $_COOKIE['gender_value'];
-  $values['languages'] = empty($_COOKIE['languages_value']) ? '' : $_COOKIE['languages_value'];
+  $values['Languages_[]'] = empty($_COOKIE['Languages_[]_value']) ? '' : $_COOKIE['Languages_[]_value'];
   $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
   $values['agree'] = empty($_COOKIE['agree_value']) ? '' : $_COOKIE['agree_value'];
-  $values['languages'] = empty($_COOKIE['languages_value']) ? '' : explode(',', $_COOKIE['languages_value']);
+  $values['Languages'] = empty($_COOKIE['Languages_[]_value']) ? '' : explode(',', $_COOKIE['Languages_[]_value']);
   $values['agree'] = empty($_COOKIE['agree_value']) ? '' : ($_COOKIE['agree_value'] === '1');
  
   // Включаем содержимое файла form.php.
@@ -123,19 +123,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 else {
   // Проверяем ошибки.
   $errors = FALSE;
-  if (empty($_POST['names'])) {
+  if (empty($_POST['name'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
-    setcookie('names_error', '1', time() + 24 * 60 * 60);
+    setcookie('name_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
     // Сохраняем ранее введенное в форму значение на месяц.
-setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
-  if (empty($_POST['phone'])) {
+setcookie('name_value', $_POST['name'], time() + 30 * 24 * 60 * 60);
+  if (empty($_POST['tel'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
-    setcookie('phone_error', '1', time() + 24 * 60 * 60);
+    setcookie('tel_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  setcookie('phone_value', $_POST['phone'], time() + 30 * 24 * 60 * 60);
+  setcookie('tel_value', $_POST['tel'], time() + 30 * 24 * 60 * 60);
  
   if (empty($_POST['email'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
@@ -158,14 +158,14 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
   }
   setcookie('gender_value', $_POST['gender'], time() + 30 * 24 * 60 * 60);
  
-  if (empty($_POST['languages'])) {
+  if (empty($_POST['Languages_[]'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
-    setcookie('languages_error', '1', time() + 24 * 60 * 60);
+    setcookie('Languages_[]_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  $language_string = implode(",", $_POST['languages']);
-  setcookie('languages_value', $language_string, time() + 30 * 24 * 60 * 60);
-  $languages_array = explode(",", $_COOKIE['languages_value']);
+  $language_string = implode(",", $_POST['Languages_[]']);
+  setcookie('Languages_[]_value', $Language_[]_string, time() + 30 * 24 * 60 * 60);
+  $languages_array = explode(",", $_COOKIE['Languages_[]_value']);
  
   if (empty($_POST['biography'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
@@ -187,8 +187,8 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     exit();
   }
   else {
-    setcookie('names_error', '', 100000);
-    setcookie('phone_error', '', 100000);
+    setcookie('name_error', '', 100000);
+    setcookie('tel_error', '', 100000);
     setcookie('email_error', '', 100000);
     setcookie('date_error', '', 100000);
     setcookie('gender_error', '', 100000);
@@ -196,8 +196,8 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     setcookie('biography_error', '', 100000);
     setcookie('agree_error', '', 100000);
   }
-$names = isset($_POST['names']) ? $_POST['names'] : '';
-$phone = isset($_POST['phone']) ? $_POST['phone'] : '';
+$names = isset($_POST['name']) ? $_POST['name'] : '';
+$phone = isset($_POST['tel']) ? $_POST['tel'] : '';
 $email = isset($_POST['email']) ? $_POST['email'] : '';
 $date = isset($_POST['date']) ? $_POST['date'] : '';
 $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
@@ -207,7 +207,7 @@ $biography = isset($_POST['biography']) ? $_POST['biography'] : '';
     $db = new PDO('mysql:host=localhost;dbname=u67438', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  
-    foreach ($_POST['languages'] as $language) {
+    foreach ($_POST[languages'] as $language) {
         $stmt = $db->prepare("SELECT id FROM languages WHERE id= :id");
         $stmt->bindParam(':id', $language);
         $stmt->execute();
@@ -218,8 +218,8 @@ $biography = isset($_POST['biography']) ? $_POST['biography'] : '';
     }
  
     try {
-        $stmt = $db->prepare("INSERT INTO application (names,phones,email,dates,gender,biography)" . "VALUES (:names,:phone,:email,:date,:gender,:biography)");
-        $stmt->execute(array('names' => $names, 'phone' => $phone, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
+        $stmt = $db->prepare("INSERT INTO application (name,tel,email,dates,gender,biography)" . "VALUES (:name,:tel,:email,:date,:gender,:biography)");
+        $stmt->execute(array('name' => $name, 'tel' => $tel, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
         $applicationId = $db->lastInsertId();
       
         foreach ($_POST['languages'] as $language) {
