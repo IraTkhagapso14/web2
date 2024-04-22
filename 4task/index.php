@@ -163,9 +163,9 @@ setcookie('name_value', $_POST['name'], time() + 30 * 24 * 60 * 60);
     setcookie('Languages_[]_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  $language_string = implode(",", $_POST['Languages_[]']);
-  setcookie('Languages_[]_value', $Language_[]_string, time() + 30 * 24 * 60 * 60);
-  $languages_array = explode(",", $_COOKIE['Languages_[]_value']);
+  $language_string = implode(",", $_POST['languages']);
+  setcookie('languages_value', $language_string, time() + 30 * 24 * 60 * 60);
+  $languages_array = explode(",", $_COOKIE['languages_value']);
  
   if (empty($_POST['biography'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
