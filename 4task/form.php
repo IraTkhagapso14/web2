@@ -5,27 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма</title>
+    <title>Контактная форма</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
-
-
-    <?php
-    if (!empty($massages))
-    {
-print('<div id="messages">');
-foreach($messages as $message)
-{
-    print($message);
-}
-print('</div>');
+<?php
+  if (!empty($messages)) {
+    print('<div id="messages">');
+    foreach ($messages as $message) {
+      print($message);
     }
-    
-    ?>
-    <body>
+    print('</div>');
+  }
+?>
+
+<body>
     <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
         <form action="index.php" method="POST" class="row mx-5 my-2 gy-1">
             <div class="form_item form-group">
@@ -34,6 +30,7 @@ print('</div>');
                                     } ?> value="<?php print $values['fio']; ?>"> 
                 </label>
             </div>
+
             <div class="form_item form-group">
                 <label>Номер телефона:<br/>
                 <input name="tel" <?php if ($errors['tel'] || $errors['symboltel_error']) {
@@ -49,6 +46,7 @@ print('</div>');
                                     } ?> value="<?php print $values['email']; ?>" type="email">
                 </label>
             </div>
+
             <div class="form_item form-group">
                 <label for="formDate" style="color: black;">Дата рождения:<br/>
                 <input name="date" <?php if ($errors['date']) {
@@ -57,6 +55,7 @@ print('</div>');
                 </label>
             </div>
 
+            
 
             <div class="form_item form-group">
                 <label style="color: black;">Пол:</label><br>
@@ -91,7 +90,6 @@ print('</div>');
                 </select> 
             </div>
 
-
             <div class="form_item form-group">
                 <label for="formMessage" style="color: black;">Биография:</label><br/>
                 <textarea name="bio" <?php if ($errors['bio']) {
@@ -105,11 +103,22 @@ print('</div>');
                     <input id="agree" type="checkbox" name="agree" class="checkbox_input form-check-input">
                 </div>
             </div>
-
             
-        <div class="form_item form-group">
+            <div class="form_item form-group">
                 <label class="col-12"><input type="submit" value="Сохранить" name="submit" class="submit btn-dark"></label>
             </div>
         </form>
+    </div>
+
+    <div class="fon1 tab mt-4 mb-4 shadow rounded">
+        <label>1. Ошибка в заполнении.</label><br>
+        <img src="img/1.png" alt="Image 1">
+        <br>
+        <label>2. Ошибка в заполнении (с телефона).</label><br>
+        <img src="img/2.png" alt="Image 2">
+        <br>
+        <label>3. Успех!</label><br>
+        <img src="img/3.png" alt="Image 3">
+        <br>
     </div>
 </body>
