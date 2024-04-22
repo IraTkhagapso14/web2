@@ -25,7 +25,7 @@
     <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
         <form action="index.php" method="POST" class="row mx-5 my-2 gy-1">
             <div class="form_item form-group">
-                <label for="formName" style="color: black;">ФИО:<br> <input name="fio" <?php if ($errors['fio'] || $errors['symbolfio_error']) {
+                <label for="formName" style="color: black;">ФИО:<br> <input name="fio" <?php if ($errors['fio'] || $errors['fio_error']) {
                                       print 'class="error"';
                                     } ?> value="<?php print $values['fio']; ?>"> 
                 </label>
@@ -33,7 +33,7 @@
 
             <div class="form_item form-group">
                 <label>Номер телефона:<br/>
-                <input name="tel" <?php if ($errors['tel'] || $errors['symboltel_error']) {
+                <input name="tel" <?php if ($errors['tel'] || $errors['tel_error']) {
                                     print 'class="error"';
                                 } ?> value="<?php print $values['tel']; ?>"> 
                 </label>
