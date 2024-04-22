@@ -14,7 +14,7 @@
 
 <body>
     <?php
-    if (!empty($massages))
+    if (!empty($messages))
     {
 print('<div id="messages">');
 foreach($messages as $message)
