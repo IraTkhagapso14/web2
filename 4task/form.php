@@ -27,13 +27,13 @@ if (!empty($messages)) {
         <!-- ФИО -->
     <div class="form_item form-group">
         <label for="formName" style="color: black;">ФИО:</label>
-        <input name="names" class="<?php if ($errors['names']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['names']; ?>" />
+        <input name="name" class="<?php if ($errors['name']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['name']; ?>" />
     </div>
  
     <!-- Телефон -->
     <div class="form_item form-group">
         <label for="formTel" style="color: black;">Телефон:</label>
-        <input name="phone" class="<?php if ($errors['phone']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['phone']; ?>" />
+        <input name="tel" class="<?php if ($errors['tel']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['tel']; ?>" />
     </div>
  
     <!-- E-mail -->
@@ -64,7 +64,7 @@ if (!empty($messages)) {
     <!-- Любимый язык программирования -->
     <div class="form_item form-group">
         <label for="multipleLanguages" style="color: black;">Любимый язык программирования:</label>
-        <select multiple class="<?php if ($errors['languages']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" id="multipleLanguages" name="languages[]">
+        <select multiple class="<?php if ($errors['Languages']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" id="multipleLanguages" name="Languages[]">
             <option value="1">Pascal</option>
               <option value="2">C</option>
               <option value="3">C++</option>
