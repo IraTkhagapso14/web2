@@ -143,9 +143,9 @@ else  {
     $errors = TRUE;
   }
     setcookie('date_value', $_POST['date'], time() + 30 * 24 * 60 * 60);
-    $user = 'u67313';
-    $pass = '4344635';
-    $db = new PDO('mysql:host=127.0.0.1;dbname=u67313', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $user = 'u67438';
+    $pass = '9231297';
+    $db = new PDO('mysql:host=127.0.0.1;dbname=u67438', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
   if (empty($_POST['languages'])) {
