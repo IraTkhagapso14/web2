@@ -44,7 +44,7 @@ if (!empty($messages)) {
  
     <!-- Дата рождения -->
     <div class="form_item form-group">
-        <label for="formDate" style="color: black;">Дата рождения:</label>
+        <label for="formDate" style="color: black;">Дата рождения (вводите дату в формате год, месяц, день: 2009-08-09):</label>
         <input name="date" class="<?php if ($errors['date']) {print 'error';} ?> form-control w-50 shadow bg-white rounded" value="<?php print $values['date']; ?>" />
     </div>
  
