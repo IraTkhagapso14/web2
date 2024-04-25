@@ -203,7 +203,7 @@ else {
         $db = new PDO('mysql:host=localhost;dbname=u67438', 'u67438', '9231297', array(PDO::ATTR_PERSISTENT => true));
         
         $stmt = $db->prepare("UPDATE application SET names = ?, phones = ?, email = ?, data = ?, gender = ?, biography = ? WHERE id = ?");
-        $stmt->execute([$_POST['names'], $_POST['phone'], $_POST['email'], $_POST['data'], $_POST['gender'], $_POST['biography'], $_SESSION['uid']]);
+        $stmt->execute([$_POST['names'], $_POST['phone'], $_POST['email'], $_POST['dates'], $_POST['gender'], $_POST['biography'], $_SESSION['uid']]);
 
         $stmt = $db->prepare("DELETE FROM languages WHERE id = ?");
         $stmt->execute([$_SESSION['uid']]);
