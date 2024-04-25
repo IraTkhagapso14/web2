@@ -99,7 +99,7 @@ if (empty($_COOKIE['language_value'])) {
         // загрузить данные пользователя из БД
         // и заполнить переменную $values,
         // предварительно санитизовав.
-        $db = new PDO('mysql:host=localhost;dbname=u67419', 'u67419', '8693464', array(PDO::ATTR_PERSISTENT => true));
+        $db = new PDO('mysql:host=localhost;dbname=u67438', 'u67438', '9231297', array(PDO::ATTR_PERSISTENT => true));
         
         $stmt = $db->prepare("SELECT * FROM application WHERE id = ?");
         $stmt->execute([$_SESSION['uid']]);
