@@ -49,7 +49,6 @@ label {
     border-color: red; /* Красная рамка для элементов с ошибкой */
 }
 /* Стили для поля с ФИО */
-/* Стили для поля с ФИО */
 input[name="names"] {
     border: 1px solid #ced4da; /* Цвет границы поля */
     border-radius: 4px; /* Закругление углов */
@@ -119,10 +118,11 @@ table td {
 .action-buttons .delete-button {
     background-color: #dc3545; /* Цвет фона */
     color: #fff; /* Цвет текста */
-    padding: 5px 10px; /* Внутренний отступ */
+    padding: 8px 16px; /* Внутренний отступ */
     border: none; /* Убираем границу */
     border-radius: 5px; /* Закругление углов */
     cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавное изменение цвета фона */
 }
 
 /* Стили для кнопки удаления при наведении */
@@ -143,4 +143,63 @@ table td {
 /* Стили для кнопки редактирования при наведении */
 .action-buttons .edit-button:hover {
     background-color: #0056b3; /* Цвет фона при наведении */
+}
+
+.edit-user-form {
+    max-width: 600px; /* Ограничиваем ширину формы */
+    margin: 0 auto; /* Центрируем форму на странице */
+    background-color: #fff; /* Цвет фона формы */
+    padding: 20px; /* Внутренний отступ формы */
+    border-radius: 5px; /* Закругляем углы формы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Добавляем тень для формы */
+}
+
+.edit-user-form label {
+    display: block; /* Делаем метки блочными элементами */
+    margin-bottom: 5px; /* Добавляем небольшой отступ снизу к меткам */
+}
+
+.edit-user-form input[type="text"],
+.edit-user-form input[type="tel"],
+.edit-user-form input[type="email"],
+.edit-user-form input[type="date"],
+.edit-user-form textarea,
+.edit-user-form select {
+    width: 100%; /* Ширина элементов ввода */
+    padding: 10px; /* Внутренний отступ */
+    margin-bottom: 15px; /* Отступ между элементами */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 5px; /* Закругление углов */
+    box-sizing: border-box; /* Учитываем границы в общей ширине */
+}
+
+.edit-user-form select {
+    appearance: none; /* Убираем стандартные стили для выпадающего списка */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.edit-user-form textarea {
+    min-height: 100px; /* Минимальная высота текстового поля */
+}
+
+.edit-user-form input[type="submit"] {
+    padding: 10px 20px; /* Внутренний отступ кнопки */
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: #fff; /* Цвет текста кнопки */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругление углов */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+.edit-user-form input[type="submit"]:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+}
+
+.edit-user-form .delete-button {
+    background-color: #dc3545; /* Цвет фона кнопки удаления */
+}
+
+.edit-user-form .delete-button:hover {
+    background-color: #c82333; /* Цвет фона кнопки удаления при наведении */
 }
