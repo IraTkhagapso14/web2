@@ -27,7 +27,7 @@
 
       Имя:<br><input type="text" name="names" <?php if ($errors['names']) {print 'class="group error"';} else print 'class="group"'; ?> value="<?php print htmlspecialchars($values['names']); ?>">
       <br>
-      Телефон:<br><input type="tel" name="phone" <?php if ($errors['phone']) {print 'class="group error"';} else print 'class="group"'; ?> value="<?php print htmlspecialchars($values['phone']); ?>">
+      Телефон (вводить в формате +7 (347) 456-89-12):<br><input type="tel" name="phone" <?php if ($errors['phone']) {print 'class="group error"';} else print 'class="group"'; ?> value="<?php print htmlspecialchars($values['phone']); ?>">
       <br>
       E-mail:<br><input type="text" name="email" <?php if ($errors['email']) {print 'class="group error"';} else print 'class="group"'; ?> value="<?php print htmlspecialchars($values['email']); ?>"><br>
       Дата рождения:
